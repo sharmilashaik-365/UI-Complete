@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+        var products=[
+            {Name:"Earpods", Price:2500.00,Photo:"../../images/headset.png"},
+            {Name:"Nike Casuals", Price:6050.00,Photo:"../../images/shoes.jpeg"},
+            {Name:"Lee Boot", Price:2550.00,Photo:"../../images/shoe1.jpeg"},
+        ];
+        function loadImage(index){
+            var pic=document.getElementById("pic");
+            pic.src=products[index].Photo;
+            var lblName=document.getElementById("lblName");
+            var lblPrice=document.getElementById("lblPrice");
+            lblName.innerHTML=products[index].Name;
+            lblPrice.innerHTML="&#8377;"+products[index].Price;
+        }
+        var index=0;
+        function NextClick(){
+            index++;
+            loadImage(index);
+        }
+        function PreviousClick(){
+            index--;
+            loadImage(index);
+        }function SlideShow(){
+            var txtRange=document.getElementById("txtRange").value;
+            loadImage(txtRange);
+        }
+
+        
+    </script>
+</head>
+<body class="container-fluid" onload="loadImage(0)">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3 id="lblName"></h3>
+        </div>
+        <div class="card-body text-center">
+            <button onclick="PreviousClick()" class="btn btn-outline-danger">
+            <span>&gt;</span></button>
+
+        </div>
+        <div class="card-footer text-center">
+            <h3 id="lblPrice"></h3>
+            <input onchange="SlideShow()" class="form-control-range" id="txtRange" type="range" min="0" value="0" max="3">
+        </div>
+    </div>
+    
+</body>
+</html>
